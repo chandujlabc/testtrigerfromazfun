@@ -1,11 +1,14 @@
-name: sample
 on:
-  push:
-    branches: ["main"]
-jobs: 
-  test:
+  workflow_dispatch:
+    inputs:
+      example_parameter:
+        description: 'An example input'
+        required: false
+        default: 'value'
+
+jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses : actions/checkout@v4
-      - name: just run normal printing
-        run: echo "hello world!"
+      - uses: actions/checkout@v5
+      - run: echo "Workflow triggered from Azure Function App"
